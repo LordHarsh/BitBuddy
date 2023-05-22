@@ -1,13 +1,11 @@
 import URLShortenerForm from "../components/URLShortenerForm";
-import Background from "../components/Background";
 
-function Home() {
+const Home = () => {
   return (
     <>
       <URLShortenerForm />
-      <Background />
     </>
   );
-}
+};
 
 export default Home;

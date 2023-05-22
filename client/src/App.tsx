@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomeContainer from "./containers/Home";
-import HandleRedirectContainer from "./containers/HandleRedirect";
+import HomeContainer from "./pages/Home";
+import HandleRedirectContainer from "./pages/HandleRedirect";
 
 function App() {
   return (

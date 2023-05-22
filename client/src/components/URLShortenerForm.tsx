@@ -22,18 +22,28 @@ function URLShortenerForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e: any) => setDestination(e.target.value)}
-          placeholder="https://example.com"
-        />
-        <button type="submit">CREATE</button>
-      </form>
-      {shortUrl && (
-        <a href={`/${shortUrl?.shortId}`}>
-          {window.location.origin}/{shortUrl?.shortId}
-        </a>
-      )}
+      <div className="pt-44">
+        <form
+          className="flex justify-center items-center px-10 "
+          onSubmit={handleSubmit}
+        >
+          <input
+            className="border-b-2 w-96 p-2 text-black "
+            onChange={(e: any) => setDestination(e.target.value)}
+            placeholder="https://example.com"
+          />
+          <button type="submit" className="border-2 p-2 font-bold bg-blue-400">
+            Shorten
+          </button>
+        </form>
+        <div className="flex justify-center pt-4">
+          {shortUrl && (
+            <a href={`/${shortUrl?.shortId}`}>
+              Shorten-URL: {window.location.origin}/{shortUrl?.shortId}
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
