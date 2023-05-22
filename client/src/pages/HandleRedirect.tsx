@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
-// import { Spinner, Box } from "@chakra-ui/react";
 
 const SERVER_ENDPOINT =
   process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8080";
