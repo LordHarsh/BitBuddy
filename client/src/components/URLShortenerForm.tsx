@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { SERVER_ENDPOINTS } from "../config";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function URLShortenerForm() {
-  const [destination, setDestination] = useState();
+const URLShortenerForm: FunctionComponent = () => {
+  const [destination, setDestination] = useState("");
   const [shortUrl, setShortUrl] = useState<{
     shortId: string;
   } | null>(null);
@@ -11,17 +13,31 @@ function URLShortenerForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setShortUrl(null);
-    if (!destination) return alert("Please enter a URL");
+    if (destination === "")
+      return toast.error("Please enter a valid URL!", {
+        position: "top-right",
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "dark",
+      });
     const result = await axios
       .post(`${SERVER_ENDPOINTS}/api/url`, {
         destination,
       })
       .then((resp) => resp.data);
+    toast.success("Link has been Shortened!✅", {
+      position: "top-right",
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "dark",
+    });
     setShortUrl(result);
+    setDestination("");
   }
 
   return (
     <div>
+      <ToastContainer />
       <div className="pt-44 h-screen">
         <form
           className="flex justify-center space-x-10 items-center px-10 "
@@ -55,6 +71,6 @@ function URLShortenerForm() {
       </div>
     </div>
   );
-}
+};
 
 export default URLShortenerForm;
