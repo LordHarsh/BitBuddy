@@ -13,7 +13,7 @@ const URLShortenerForm: FunctionComponent = () => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `https://bit-buddy.vercel.app/` + shortUrl?.shortId
+      `${process.env.REACT_APP_CLIENT_ENDPOINT}` + shortUrl?.shortId
     );
     toast.success("Copied! to Clipboard!✅", {
       position: "top-right",
@@ -75,7 +75,9 @@ const URLShortenerForm: FunctionComponent = () => {
           <div className="flex justify-center pt-10">
             {shortUrl ? (
               <div className="flex justify-between text-black md:text-2xl font-bold md:space-x-20 space-x-4 bg-pink-300 md:px-10 px-4 py-2 rounded-md">
-                <a href={`https://bit-buddy.vercel.app/${shortUrl?.shortId}`}>
+                <a
+                  href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
+                >
                   <div>BitBuddy/{shortUrl?.shortId}</div>
                 </a>
                 <div onClick={handleCopy} className="cursor-pointer">
