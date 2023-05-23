@@ -12,7 +12,7 @@ const URLShortenerForm: FunctionComponent = () => {
   } | null>(null);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("http://localhost:8000/" + shortUrl?.shortId);
+    navigator.clipboard.writeText(`${SERVER_ENDPOINTS}` + shortUrl?.shortId);
     toast.success("Copied! to Clipboard!✅", {
       position: "top-right",
       closeOnClick: true,
