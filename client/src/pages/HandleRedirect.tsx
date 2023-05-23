@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 
 const SERVER_ENDPOINT =
-  process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8080";
+  process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8000";
 
 function HandleRedirectContainer() {
   const [destination, setDestination] = useState<null | string>(null);

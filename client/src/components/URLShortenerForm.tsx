@@ -12,7 +12,7 @@ const URLShortenerForm: FunctionComponent = () => {
   } | null>(null);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("http://localhost:3000/" + shortUrl?.shortId);
+    navigator.clipboard.writeText("http://localhost:8000/" + shortUrl?.shortId);
     toast.success("Copied! to Clipboard!✅", {
       position: "top-right",
       closeOnClick: true,
@@ -24,13 +24,6 @@ const URLShortenerForm: FunctionComponent = () => {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setShortUrl(null);
-    if (destination === "")
-      return toast.error("Please enter a valid URL!", {
-        position: "top-right",
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: "dark",
-      });
     try {
       const result = await axios
         .post(`${SERVER_ENDPOINTS}/api/url`, {
@@ -70,6 +63,7 @@ const URLShortenerForm: FunctionComponent = () => {
               placeholder="Paste your link here..."
             />
             <button
+              disabled={!destination}
               type="submit"
               className="bg-pink-400 text-black font-semibold rounded-r-md px-2 md:px-10 text-xl py-3"
             >
