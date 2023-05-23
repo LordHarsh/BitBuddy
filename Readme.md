@@ -15,6 +15,10 @@ BitBuddy is a delightful and user-friendly URL shortener built with React, Tailw
 <!-- - **Copy to Clipboard**: Easily copy shortened links to your clipboard with just a click. -->
 - **Responsive Design**: Enjoy a seamless experience across various devices, including desktops, tablets, and mobile phones.
 
+## Preview
+![image](https://github.com/divyanshu1810/BitBuddy/assets/91051053/a38d882b-f34e-442c-8a3a-79d4ee0cccad)
+
+
 ## Installation
 
 To run BitBuddy locally, follow these steps:
