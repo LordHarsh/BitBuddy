@@ -10,6 +10,16 @@ const URLShortenerForm: FunctionComponent = () => {
     shortId: string;
   } | null>(null);
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText("http://localhost:3000/" + shortUrl?.shortId);
+    toast.success("Copied! to Clipboard!✅", {
+      position: "top-right",
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "dark",
+    });
+  };
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setShortUrl(null);
@@ -32,41 +42,43 @@ const URLShortenerForm: FunctionComponent = () => {
       theme: "dark",
     });
     setShortUrl(result);
-    setDestination("");
   }
 
   return (
     <div>
       <ToastContainer />
-      <div className="pt-44 h-screen">
-        <form
-          className="flex justify-center space-x-10 items-center px-10 "
-          onSubmit={handleSubmit}
-        >
-          <input
-            className="border-b-2 w-8/12 p-2 text-black outline-none bg-transparent "
-            onChange={(e: any) => setDestination(e.target.value)}
-            placeholder="https://example.com"
-          />
-          <button
-            type="submit"
-            className="border-2 rounded-md p-2 font-bold bg-blue-400"
+      <div className="h-screen flex justify-center">
+        <div className=" rounded-md lg:w-7/12 w-10/12 top-[50%] absolute">
+          <form
+            className="flex justify-center flex-col lg:flex-row items-center"
+            onSubmit={handleSubmit}
           >
-            Shorten
-          </button>
-        </form>
-        <div className="flex justify-center pt-4">
-          {shortUrl && (
-            <a
-              href={`/${shortUrl?.shortId}`}
-              className="w-fit border p-4 rounded-md  bg-opacity-0 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg"
+            <input
+              className="w-full text-xl text-black outline-none rounded-l-md bg-white py-3 px-4 font-semibold"
+              onChange={(e: any) => setDestination(e.target.value)}
+              placeholder="Paste your link here..."
+            />
+            <button
+              type="submit"
+              className="bg-pink-400 text-black font-semibold lg:rounded-r-md px-10 text-xl py-3"
             >
-              Shorten-URL:{" "}
-              <span className=" text-red-900 font-bold">
-                {window.location.origin}/{shortUrl?.shortId}
-              </span>
-            </a>
-          )}
+              Drop!
+            </button>
+          </form>
+          <div className="flex justify-center  pt-10">
+            {shortUrl ? (
+              <div className="flex justify-between text-black text-2xl font-bold space-x-20 bg-pink-300 px-10 py-2 rounded-md">
+                <a href={`${shortUrl?.shortId}`}>
+                  <div>BitBuddy/{shortUrl?.shortId}</div>
+                </a>
+                <div onClick={handleCopy} className="cursor-pointer">
+                  📝
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>
