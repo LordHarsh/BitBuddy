@@ -7,11 +7,7 @@ import db from "./db";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: config.get("corsOrigin"),
-  })
-);
+app.use(cors());
 
 const port = config.get("port") as number;
 
