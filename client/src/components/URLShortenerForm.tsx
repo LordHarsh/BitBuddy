@@ -3,6 +3,7 @@ import { FunctionComponent, useState } from "react";
 import { SERVER_ENDPOINTS } from "../config";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
 
 const URLShortenerForm: FunctionComponent = () => {
   const [destination, setDestination] = useState("");
@@ -30,27 +31,37 @@ const URLShortenerForm: FunctionComponent = () => {
         pauseOnHover: true,
         theme: "dark",
       });
-    const result = await axios
-      .post(`${SERVER_ENDPOINTS}/api/url`, {
-        destination,
-      })
-      .then((resp) => resp.data);
-    toast.success("Link has been Shortened!✅", {
-      position: "top-right",
-      closeOnClick: true,
-      pauseOnHover: true,
-      theme: "dark",
-    });
-    setShortUrl(result);
+    try {
+      const result = await axios
+        .post(`${SERVER_ENDPOINTS}/api/url`, {
+          destination,
+        })
+        .then((resp) => resp.data);
+      toast.success("Link has been Shortened!✅", {
+        position: "top-right",
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "dark",
+      });
+      setShortUrl(result);
+    } catch (error) {
+      toast.error("Please enter a valid URL!", {
+        position: "top-right",
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "dark",
+      });
+    }
   }
 
   return (
     <div>
       <ToastContainer />
       <div className="h-screen flex justify-center">
-        <div className=" rounded-md lg:w-7/12 w-10/12 top-[50%] absolute">
+        <div className=" rounded-md lg:w-7/12 w-10/12 top-[25%] absolute">
+          <Header />
           <form
-            className="flex justify-center flex-col lg:flex-row items-center"
+            className="flex justify-center flex-row items-center"
             onSubmit={handleSubmit}
           >
             <input
@@ -60,14 +71,14 @@ const URLShortenerForm: FunctionComponent = () => {
             />
             <button
               type="submit"
-              className="bg-pink-400 text-black font-semibold lg:rounded-r-md px-10 text-xl py-3"
+              className="bg-pink-400 text-black font-semibold rounded-r-md px-2 md:px-10 text-xl py-3"
             >
-              Drop!
+              BitBuddy!
             </button>
           </form>
-          <div className="flex justify-center  pt-10">
+          <div className="flex justify-center pt-10">
             {shortUrl ? (
-              <div className="flex justify-between text-black text-2xl font-bold space-x-20 bg-pink-300 px-10 py-2 rounded-md">
+              <div className="flex justify-between text-black md:text-2xl font-bold md:space-x-20 space-x-4 bg-pink-300 md:px-10 px-4 py-2 rounded-md">
                 <a href={`${shortUrl?.shortId}`}>
                   <div>BitBuddy/{shortUrl?.shortId}</div>
                 </a>
