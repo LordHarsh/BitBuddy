@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
+import Loader from "../components/Loader";
 
 const SERVER_ENDPOINT =
   process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8000";
@@ -34,7 +35,7 @@ function HandleRedirectContainer() {
   }, [destination]);
 
   if (!destination && !error) {
-    return <>Loading...</>;
+    return <Loader />;
   }
 
   return <p>{error && JSON.stringify(error)}</p>;

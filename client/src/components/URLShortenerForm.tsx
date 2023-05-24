@@ -12,7 +12,9 @@ const URLShortenerForm: FunctionComponent = () => {
   } | null>(null);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/` + shortUrl?.shortId);
+    navigator.clipboard.writeText(
+      `${process.env.REACT_APP_CLIENT_ENDPOINT}` + shortUrl?.shortId
+    );
     toast.success("Copied! to Clipboard!✅", {
       position: "top-right",
       closeOnClick: true,
@@ -73,7 +75,9 @@ const URLShortenerForm: FunctionComponent = () => {
           <div className="flex justify-center pt-10">
             {shortUrl ? (
               <div className="flex justify-between text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-[#29b6f6] md:px-10 px-4 py-2 rounded-md">
-                <a href={`http://localhost:3000/${shortUrl?.shortId}`}>
+                <a
+                  href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
+                >
                   <div>BitBuddy/{shortUrl?.shortId}</div>
                 </a>
                 <div onClick={handleCopy} className="cursor-pointer">
