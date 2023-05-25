@@ -43,3 +43,12 @@ export async function getShortUrl(req: Request, res: Response) {
 
   return res.json(short);
 }
+
+export async function getAllUrls(req: Request, res: Response) {
+  try {
+    const data = await shortUrl.find({}).lean();
+    return res.send(data);
+  } catch (error) {
+    return res.sendStatus(500).send(error);
+  }
+}
