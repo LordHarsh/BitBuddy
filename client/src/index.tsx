@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Background from "./components/background.tsx/Background";
+import Background from "./components/background/Background";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
