@@ -8,7 +8,7 @@ interface CardsProps {
 const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `${process.env.REACT_APP_CLIENT_ENDPOINT}/` + shortURL
+      `${process.env.REACT_APP_CLIENT_ENDPOINT}` + shortURL
     );
     toast.success("Copied! to Clipboard!✅", {
       position: "top-right",
