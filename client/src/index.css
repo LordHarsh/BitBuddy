@@ -10,21 +10,7 @@ body{
   background-position: center;
   overflow: hidden;
   scroll-behavior: smooth;
-  
-  /* background-image: url(../public/pattern/pattern1.png), url(../public/pattern/pattern2.png);
-  background-size: 40%, 30%, 25%;
-  background-position: 100% 0%, 0% 75%, 100% 90%;
-  background-repeat: no-repeat, no-repeat, no-repeat; */
 }
 ::-webkit-scrollbar {
   display: none;
 }
-
-/* @media only screen and (max-width: 767px) {
-  body {
-    background-image: url(../public/pattern/pattern4.png), url(../public/pattern/pattern5.png), url(../public/pattern/pattern6.png), url(../public/pattern/pattern7.png);
-    background-size: 30%, 30%, 45%, 25%;
-    background-position: 100% 0%, 0% 35%, 100% 55%, 0% 80%;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-  }
-} */
