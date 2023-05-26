@@ -10,13 +10,14 @@ body{
   background-position: center;
   overflow: hidden;
   scroll-behavior: smooth;
-  ::-webkit-scrollbar {
-      display: none;
-    }
+  
   /* background-image: url(../public/pattern/pattern1.png), url(../public/pattern/pattern2.png);
   background-size: 40%, 30%, 25%;
   background-position: 100% 0%, 0% 75%, 100% 90%;
   background-repeat: no-repeat, no-repeat, no-repeat; */
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* @media only screen and (max-width: 767px) {
