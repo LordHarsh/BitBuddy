@@ -1,15 +1,39 @@
 import React, { FunctionComponent } from "react";
+import { ToastContainer, toast } from "react-toastify";
 interface CardsProps {
   longlink: string;
   shortURL: string;
 }
+
 const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
+  const handleCopy = () => {
+    navigator.clipboard.writeText(
+      `${process.env.REACT_APP_CLIENT_ENDPOINT}/` + shortURL
+    );
+    toast.success("Copied! to Clipboard!✅", {
+      position: "top-right",
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "dark",
+    });
+  };
   return (
-    <div className=" w-screen  lg:w-96 p-2 rounded-md mt-2 text-center bg-[#29b6f6] text-white">
-      <div>Original Link: {longlink.substring(0, 25)}...</div>
-      <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
-        <div className="font-semibold">Shorten Link: {shortURL}</div>
-      </a>
+    <div className=" w-screen  lg:w-96 py-2 px-3 rounded-md mt-2 bg-[#29b6f6] text-white">
+      <ToastContainer />
+      <div className="flex justify-between items-center">
+        <div>
+          <div>Original Link: {longlink.substring(0, 20)}...</div>
+          <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
+            <div className="font-semibold">Shorten Link: {shortURL}</div>
+          </a>
+        </div>
+        <div
+          onClick={handleCopy}
+          className="cursor-pointer text-2xl hover:scale-110"
+        >
+          📝
+        </div>
+      </div>
     </div>
   );
 };
