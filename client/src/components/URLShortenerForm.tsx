@@ -80,7 +80,10 @@ const URLShortenerForm: FunctionComponent = () => {
                 >
                   <div>BitBuddy/{shortUrl?.shortId}</div>
                 </a>
-                <div onClick={handleCopy} className="cursor-pointer">
+                <div
+                  onClick={handleCopy}
+                  className="cursor-pointer hover:scale-125"
+                >
                   📝
                 </div>
               </div>
