@@ -5,17 +5,15 @@ import Loader from "../Loader";
 
 const Links = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(`${SERVER_ENDPOINTS}/api/history`)
       .then((res) => res.json())
       .then((response) => setData(response));
-    setLoading(false);
   }, []);
 
   return (
     <div>
-      {loading ? (
+      {!data.length ? (
         <Loader />
       ) : (
         <div className="flex justify-center px-4 md:px-20 pt-10">
