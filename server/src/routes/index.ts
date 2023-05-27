@@ -5,13 +5,17 @@ import {
   getAnalytics,
   getShortUrl,
   getAllUrls,
+  getAnalyticsforURL,
 } from "../controller/shortUrl.controller";
 import validateResourse from "../middleware/validateResourse";
 import shortUrlSchema from "../schemas/createShortUrl.schema";
 
 function routes(app: Express) {
   app.get("/healthcheck", (req: Request, res: Response) => {
-    return res.send("App is healthy");
+    return res.status(200).send({
+      success: "✅ success",
+      message: "🆗 server is up and running",
+    });
   });
 
   app.post("/api/url", validateResourse(shortUrlSchema), createShortUrl);
@@ -23,6 +27,8 @@ function routes(app: Express) {
   app.get("/api/url/:shortId", getShortUrl);
 
   app.get("/api/analytics", getAnalytics);
+
+  app.get("/api/analytics/:shortId", getAnalyticsforURL);
 }
 
 export default routes;
