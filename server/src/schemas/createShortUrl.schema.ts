@@ -5,5 +5,6 @@ export default object({
     destination: string()
       .url("Must be a valid URL")
       .required("Destination is required"),
+    shortId: string(),
   }),
 });

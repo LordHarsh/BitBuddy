@@ -5,8 +5,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 
-const URLShortenerForm: FunctionComponent = () => {
+const URLCustomForm: FunctionComponent = () => {
   const [destination, setDestination] = useState("");
+  const [custom, setCustom] = useState("");
   const [shortUrl, setShortUrl] = useState<{
     shortId: string;
   } | null>(null);
@@ -27,9 +28,18 @@ const URLShortenerForm: FunctionComponent = () => {
     e.preventDefault();
     setShortUrl(null);
     try {
+      if (custom === "") {
+        toast.error("Please enter a custom URL!", {
+          position: "top-right",
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: "dark",
+        });
+      }
       const result = await axios
         .post(`${SERVER_ENDPOINTS}/api/url`, {
           destination,
+          shortId: custom,
         })
         .then((resp) => resp.data);
       toast.success("Link has been Shortened!✅", {
@@ -39,13 +49,22 @@ const URLShortenerForm: FunctionComponent = () => {
         theme: "dark",
       });
       setShortUrl(result);
-    } catch (error) {
-      toast.error("Please enter a valid URL!", {
-        position: "top-right",
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: "dark",
-      });
+    } catch (error: any) {
+      if (error.response.status === 409) {
+        toast.error("Custom URL already exists!", {
+          position: "top-right",
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: "dark",
+        });
+      } else {
+        toast.error("Please enter a valid URL!", {
+          position: "top-right",
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: "dark",
+        });
+      }
     }
   }
 
@@ -56,18 +75,23 @@ const URLShortenerForm: FunctionComponent = () => {
         <div className=" rounded-md lg:w-7/12 w-10/12 top-[25%] absolute">
           <Header />
           <form
-            className="flex lg:flex-row flex-col justify-center space-y-1 lg:space-y-0"
+            className="lg:flex-row flex flex-col space-y-1 lg:space-y-0 justify-center flex-rowtems-center"
             onSubmit={handleSubmit}
           >
             <input
-              className="w-full text-xl text-[#01002d] outline-none rounded-md lg:rounded-r-none lg:rounded-l-md  bg-white py-3 px-4 font-semibold"
+              className="w-full text-xl text-[#01002d] lg:mr-1 outline-none rounded-md bg-white py-3 px-4 font-semibold"
               onChange={(e: any) => setDestination(e.target.value)}
               placeholder="Paste your link here..."
+            />
+            <input
+              className="w-full text-xl text-[#01002d] outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white py-3 px-4 font-semibold"
+              onChange={(e: any) => setCustom(e.target.value)}
+              placeholder="Enter your custom URL here..."
             />
             <button
               disabled={!destination}
               type="submit"
-              className="bg-[#29b6f6] text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md px-2 md:px-10 text-xl py-3"
+              className="bg-[#29b6f6] text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md  px-2 md:px-10 text-xl py-3"
             >
               BitBuddy!
             </button>
@@ -97,4 +121,4 @@ const URLShortenerForm: FunctionComponent = () => {
   );
 };
 
-export default URLShortenerForm;
+export default URLCustomForm;
