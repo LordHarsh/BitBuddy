@@ -38,7 +38,19 @@ function HandleRedirectContainer() {
     return <Loader />;
   }
 
-  return <p>{error && JSON.stringify(error)}</p>;
+  if (destination) {
+    return (
+      <p className="absolute text-white md:text-6xl text-4xl font-semibold top-[10%] left-[5%]">
+        URL found! Redirecting... 🚀
+      </p>
+    );
+  }
+
+  return (
+    <p className="absolute text-white md:text-6xl text-4xl font-semibold top-[10%] left-[5%]">
+      Error 404! URL not found! 😔
+    </p>
+  );
 }
 
 export default HandleRedirectContainer;
