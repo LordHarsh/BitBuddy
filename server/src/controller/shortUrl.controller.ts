@@ -8,7 +8,7 @@ export async function createShortUrl(req: Request, res: Response) {
     const { destination, shortId } = await req.body;
     // Check if the ShortId already exists
     const short = await shortUrl.findOne({ shortId }).lean();
-    if (short?.shortId === shortId) {
+    if (short) {
       return res.status(409).json({ error: "ShortId already exists" });
     }
     // Create a shortUrl
