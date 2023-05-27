@@ -6,6 +6,7 @@ const nanoid = customAlphabet("abcdefghijklmnopqrstuv0987654321", 6);
 export interface ShortURL extends Document {
   shortId: string;
   destination: string;
+  timestamp: Date;
 }
 
 const schema = new mongoose.Schema({
@@ -16,6 +17,7 @@ const schema = new mongoose.Schema({
     default: () => nanoid(),
   },
   destination: { type: String, required: true },
+  timestamp: { type: Date, required: true, default: Date.now },
 });
 
 const shortUrl = mongoose.model<ShortURL>("shortUrl", schema);
