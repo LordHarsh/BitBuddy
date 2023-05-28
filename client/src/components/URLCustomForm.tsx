@@ -28,14 +28,6 @@ const URLCustomForm: FunctionComponent = () => {
     e.preventDefault();
     setShortUrl(null);
     try {
-      if (custom === "") {
-        toast.error("Please enter a custom URL!", {
-          position: "top-right",
-          closeOnClick: true,
-          pauseOnHover: true,
-          theme: "dark",
-        });
-      }
       const result = await axios
         .post(`${SERVER_ENDPOINTS}/api/url`, {
           destination,
@@ -49,7 +41,7 @@ const URLCustomForm: FunctionComponent = () => {
         theme: "dark",
       });
       setShortUrl(result);
-    } catch (error: any) {
+    } catch (error: Error | any) {
       if (error.response.status === 409) {
         toast.error("Custom URL already exists!", {
           position: "top-right",
@@ -89,7 +81,7 @@ const URLCustomForm: FunctionComponent = () => {
               placeholder="Enter your custom URL here..."
             />
             <button
-              disabled={!destination}
+              disabled={!(destination && custom)}
               type="submit"
               className="bg-[#29b6f6] text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md  px-2 md:px-10 text-xl py-3"
             >
