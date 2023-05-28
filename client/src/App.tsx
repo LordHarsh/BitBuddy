@@ -10,11 +10,11 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/history">
-          <History />
-        </Route>
         <Route exact path="/:shortId">
           <HandleRedirectContainer />
+        </Route>
+        <Route exact path="/url/history">
+          <History />
         </Route>
       </Switch>
     </Router>
