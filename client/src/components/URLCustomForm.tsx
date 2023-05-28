@@ -63,27 +63,27 @@ const URLCustomForm: FunctionComponent = () => {
   return (
     <div>
       <ToastContainer />
-      <div className="h-screen flex justify-center">
-        <div className=" rounded-md lg:w-7/12 w-10/12 top-[25%] absolute">
+      <div className="flex justify-center">
+        <div className="rounded-md lg:w-8/12 w-10/12 top-[20%] absolute">
           <Header />
           <form
             className="lg:flex-row flex flex-col space-y-1 lg:space-y-0 justify-center flex-rowtems-center"
             onSubmit={handleSubmit}
           >
             <input
-              className="w-full text-xl text-white lg:mr-1 outline-none rounded-md bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
+              className="w-full text-xl text-white lg:mr-1 outline-none rounded-md bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setDestination(e.target.value)}
               placeholder="Paste your link here..."
             />
             <input
-              className="w-full text-xl text-white outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
+              className="w-full text-xl text-white outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setCustom(e.target.value)}
               placeholder="Enter your custom URL here..."
             />
             <button
               disabled={!(destination && custom)}
               type="submit"
-              className="bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md  px-2 md:px-10 text-xl py-3"
+              className="bg-[#29b6f6] text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md  px-2 md:px-10 text-xl py-3"
             >
               BitBuddy!
             </button>
