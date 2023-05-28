@@ -21,9 +21,7 @@ BitBuddy is a delightful and user-friendly URL shortener built with React, Tailw
 
 
 ## Preview
-![image](https://github.com/divyanshu1810/BitBuddy/assets/91051053/d365c6c3-3125-4a59-b04b-e1b1b318965b)
-
-
+![image](https://github.com/divyanshu1810/BitBuddy/assets/91051053/03c3cb07-06fb-44b7-aa79-1f601414ac10)
 
 ## Installation
 
