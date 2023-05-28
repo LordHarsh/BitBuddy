@@ -28,7 +28,7 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
             <div className="font-semibold">Shorten Link: {shortURL}</div>
           </a>
         </div>
-        <div className="flex">
+        <div className="flex space-x-2">
           <Link to={`/url/analytics/${shortURL}`}>
             <div className="cursor-pointer text-2xl hover:scale-110">⚙️</div>
           </Link>
