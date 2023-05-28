@@ -45,7 +45,8 @@ export async function getAnalytics(req: Request, res: Response) {
 export async function getAnalyticsforURL(req: Request, res: Response) {
   try {
     const { shortId } = req.params;
-    const data = await shortUrl.find({ shortId }).lean();
+    const data = await shortUrl.findOne({ shortId }).lean();
+    if (!data) return res.status(404).send({ error: "URL not found" });
     return res.send(data);
   } catch (error) {
     return res.status(500).send({ error: error });
