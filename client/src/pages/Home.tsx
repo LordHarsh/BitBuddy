@@ -9,10 +9,10 @@ const Home = () => {
     <>
       <Navbar />
       <button
-        className="bg-[#29b6f6] text-white font-bold top-0 rounded-md px-2 md:px-3 text-xl py-1 absolute mt-11 mx-8"
+        className="bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg text-white font-bold top-0 rounded-md px-2 md:px-3 text-xl py-1 absolute mt-11 mx-8"
         onClick={() => setCustomize(!customize)}
       >
-        {customize ? "RANDOMIZE" : "CUSTOMIZE"}
+        {customize ? "🥴" : "🤩"}
       </button>
       {customize ? <URLCustomForm /> : <URLShortenerForm />}
     </>

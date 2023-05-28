@@ -44,17 +44,17 @@ const UrlAnalytics: FunctionComponent = () => {
       <div className="flex justify-center flex-col items-center">
         <div className="absolute top-[20%] lg:top-[25%] w-9/12">
           <div className="flex text-white justify-between  lg:flex-row flex-col lg:space-x-14">
-            <div className="border text-center px-10 py-6 bg-[#29b6f6] rounded-lg">
+            <div className="text-center bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg px-10 py-6  rounded-lg">
               <div className="text-xl font-semibold">Clicks</div>
               <div className="text-lg">{clicks}</div>
             </div>
-            <div className="border px-10 py-6 text-center lg:w-full bg-[#29b6f6] rounded-lg mt-8 lg:mt-0">
+            <div className="px-10 py-6 bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg text-center lg:w-full  rounded-lg mt-8 lg:mt-0">
               <div className="text-xl font-semibold">ShortURL</div>
               <div>{shortURL}</div>
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="border h-32 justify-center px-4 md:px-10 py-6 flex flex-col text-center w-full text-white bg-[#29b6f6] rounded-lg lg:mt-14 mt-8">
+            <div className="h-32 justify-center px-4 md:px-10 py-6 flex flex-col text-center w-full text-white bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg rounded-lg lg:mt-14 mt-8">
               <div className="text-xl font-semibold">Original URL</div>
               <div className="overflow-y-auto">{originalURL}</div>
             </div>

@@ -71,26 +71,26 @@ const URLCustomForm: FunctionComponent = () => {
             onSubmit={handleSubmit}
           >
             <input
-              className="w-full text-xl text-[#01002d] lg:mr-1 outline-none rounded-md bg-white py-3 px-4 font-semibold"
+              className="w-full text-xl text-white lg:mr-1 outline-none rounded-md bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setDestination(e.target.value)}
               placeholder="Paste your link here..."
             />
             <input
-              className="w-full text-xl text-[#01002d] outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white py-3 px-4 font-semibold"
+              className="w-full text-xl text-white outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setCustom(e.target.value)}
               placeholder="Enter your custom URL here..."
             />
             <button
               disabled={!(destination && custom)}
               type="submit"
-              className="bg-[#29b6f6] text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md  px-2 md:px-10 text-xl py-3"
+              className="bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg text-white font-bold rounded-md lg:rounded-l-none lg:rounded-r-md  px-2 md:px-10 text-xl py-3"
             >
               BitBuddy!
             </button>
           </form>
           <div className="flex justify-center pt-10">
             {shortUrl ? (
-              <div className="flex justify-between text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-[#29b6f6] md:px-10 px-4 py-2 rounded-md">
+              <div className="flex justify-between text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg md:px-10 px-4 py-2 rounded-md">
                 <a
                   href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
                 >
