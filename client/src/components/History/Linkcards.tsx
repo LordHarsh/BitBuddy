@@ -19,28 +19,30 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
     });
   };
   return (
-    <div className=" w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
+    <>
       <ToastContainer />
-      <div className="flex justify-between items-center">
-        <div>
-          <div>Original Link: {longlink.substring(0, 20)}...</div>
-          <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
-            <div className="font-semibold">Shorten Link: {shortURL}</div>
-          </a>
-        </div>
-        <div className="flex space-x-2">
-          <Link to={`/url/analytics/${shortURL}`}>
-            <div className="cursor-pointer text-2xl hover:scale-110">⚙️</div>
-          </Link>
-          <div
-            onClick={handleCopy}
-            className="cursor-pointer text-2xl hover:scale-110"
-          >
-            📝
+      <div className=" w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
+        <div className="flex justify-between items-center">
+          <div>
+            <div>Original Link: {longlink.substring(0, 20)}...</div>
+            <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
+              <div className="font-semibold">Shorten Link: {shortURL}</div>
+            </a>
+          </div>
+          <div className="flex space-x-2">
+            <Link to={`/url/analytics/${shortURL}`}>
+              <div className="cursor-pointer text-2xl hover:scale-110">⚙️</div>
+            </Link>
+            <div
+              onClick={handleCopy}
+              className="cursor-pointer text-2xl hover:scale-110"
+            >
+              📝
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
