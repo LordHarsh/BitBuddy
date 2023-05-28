@@ -1,4 +1,4 @@
-import { object, string } from "yup";
+import { number, object, string } from "yup";
 
 export default object({
   body: object({
@@ -6,5 +6,6 @@ export default object({
       .url("Must be a valid URL")
       .required("Destination is required"),
     shortId: string(),
+    click: number(),
   }),
 });

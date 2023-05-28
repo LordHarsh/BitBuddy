@@ -16,6 +16,7 @@ const schema = new mongoose.Schema({
     required: true,
     default: () => nanoid(),
   },
+  clicks: { type: Number, required: true, default: 0 },
   destination: { type: String, required: true },
   timestamp: { type: Date, required: true, default: Date.now },
 });

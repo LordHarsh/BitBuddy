@@ -12,7 +12,7 @@ export async function createShortUrl(req: Request, res: Response) {
       return res.status(409).send({ error: "ShortId already exists" });
     }
     // Create a shortUrl
-    const newUrl = await shortUrl.create({ destination, shortId });
+    const newUrl = await shortUrl.create({ destination, shortId, clicks: 0 });
     // Return the shortUrl
     return res.send(newUrl);
   } catch (error) {
@@ -58,7 +58,10 @@ export async function getShortUrl(req: Request, res: Response) {
     const { shortId } = req.params;
     const short = await shortUrl.findOne({ shortId }).lean();
     if (!short) return res.status(404).send({ error: "URL not found" });
-    return res.send(short);
+    const updateData = await shortUrl
+      .findOneAndUpdate({ shortId }, { $inc: { clicks: 1 } }, { new: true })
+      .lean();
+    return res.send(updateData);
   } catch (error) {
     return res.status(500).send({ error: error });
   }
