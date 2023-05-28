@@ -19,7 +19,7 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
     });
   };
   return (
-    <div className=" w-screen  lg:w-96 py-2 px-3 rounded-md mt-2 bg-white bg-opacity-10 lg:bg-opacity-0 hover:bg-opacity-10 lg:backdrop-blur-lg drop-shadow-lg text-white">
+    <div className=" w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
       <ToastContainer />
       <div className="flex justify-between items-center">
         <div>

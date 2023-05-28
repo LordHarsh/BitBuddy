@@ -16,8 +16,8 @@ const Links = () => {
       {!data.length ? (
         <Loader />
       ) : (
-        <div className="flex justify-center px-4 md:px-20 pt-10">
-          <div className="bg-transparent z-50 rounded-md p-4 lg:h-96 h-[380px] md:h-[700px] w-screen overflow-y-auto">
+        <div className="flex justify-center px-4 md:px-20 pt-10 pb-20">
+          <div className="bg-transparent rounded-md p-4 w-screen">
             <div className="flex justify-evenly flex-wrap">
               {data.map((element: any, id: number) => (
                 <Linkcards
