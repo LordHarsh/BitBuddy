@@ -46,7 +46,7 @@ const UrlAnalytics: FunctionComponent = () => {
           <div className="flex text-white justify-between  lg:flex-row flex-col lg:space-x-14">
             <div className="border text-center px-10 py-6 bg-[#29b6f6] rounded-lg">
               <div className="text-xl font-semibold">Clicks</div>
-              <div className="text-lg">{clicks / 2}</div>
+              <div className="text-lg">{clicks}</div>
             </div>
             <div className="border px-10 py-6 text-center lg:w-full bg-[#29b6f6] rounded-lg mt-8 lg:mt-0">
               <div className="text-xl font-semibold">ShortURL</div>
