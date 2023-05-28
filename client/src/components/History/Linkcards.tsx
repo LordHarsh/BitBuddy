@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 interface CardsProps {
   longlink: string;
@@ -27,11 +28,16 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
             <div className="font-semibold">Shorten Link: {shortURL}</div>
           </a>
         </div>
-        <div
-          onClick={handleCopy}
-          className="cursor-pointer text-2xl hover:scale-110"
-        >
-          📝
+        <div className="flex">
+          <Link to={`/url/analytics/${shortURL}`}>
+            <div className="cursor-pointer text-2xl hover:scale-110">⚙️</div>
+          </Link>
+          <div
+            onClick={handleCopy}
+            className="cursor-pointer text-2xl hover:scale-110"
+          >
+            📝
+          </div>
         </div>
       </div>
     </div>
