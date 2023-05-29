@@ -4,6 +4,7 @@ import { SERVER_ENDPOINTS } from "../config";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const URLCustomForm: FunctionComponent = () => {
   const [destination, setDestination] = useState("");
@@ -88,19 +89,26 @@ const URLCustomForm: FunctionComponent = () => {
               BitBuddy!
             </button>
           </form>
-          <div className="flex justify-center pt-10">
+          <div className="flex justify-center pt-4">
             {shortUrl ? (
-              <div className="flex justify-between text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-white bg-opacity-5 hover:bg-opacity-10 backdrop-blur-lg drop-shadow-lg md:px-10 px-4 py-2 rounded-md">
-                <a
-                  href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
-                >
-                  <div>BitBuddy/{shortUrl?.shortId}</div>
-                </a>
-                <div
-                  onClick={handleCopy}
-                  className="cursor-pointer hover:scale-125"
-                >
-                  📝
+              <div className=" w-full text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg md:px-10 px-4 py-2 rounded-md">
+                <div className="flex justify-between">
+                  <a
+                    href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
+                  >
+                    <div>BitBuddy/{shortUrl?.shortId}</div>
+                  </a>
+                  <div className="flex space-x-2">
+                    <Link to={`/url/analytics/${shortUrl?.shortId}`}>
+                      <div className="cursor-pointer hover:scale-125">⚙️</div>
+                    </Link>
+                    <p
+                      onClick={handleCopy}
+                      className="cursor-pointer hover:scale-125"
+                    >
+                      📝
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
