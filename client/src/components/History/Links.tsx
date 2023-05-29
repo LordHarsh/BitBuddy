@@ -5,21 +5,19 @@ import Loader from "../Loader";
 
 const Links = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(`${SERVER_ENDPOINTS}/api/history`)
       .then((res) => res.json())
       .then((response) => setData(response));
-    setLoading(false);
   }, []);
 
   return (
     <div>
-      {loading ? (
+      {!data.length ? (
         <Loader />
       ) : (
-        <div className="flex justify-center px-4 md:px-20 pt-10">
-          <div className="bg-transparent z-50 rounded-md p-4 h-96 w-screen overflow-y-auto">
+        <div className="flex justify-center px-4 md:px-20 pt-10 pb-20">
+          <div className="bg-transparent rounded-md p-4 w-screen">
             <div className="flex justify-evenly flex-wrap">
               {data.map((element: any, id: number) => (
                 <Linkcards

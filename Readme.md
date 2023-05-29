@@ -11,18 +11,17 @@ BitBuddy is a delightful and user-friendly URL shortener built with React, Tailw
 - **Copy to Clipboard**: Easily copy shortened links to your clipboard with just a click.
 - **Animations**: Behold the animated loader, gracefully spinning and swirling, as your web page prepares to captivate your senses. 
 - **Stores History**: Stores History of your previous shortend URLs. 
+- **Error Page**: Displays an error page if URL is not available.
 - **Responsive Design**: Enjoy a seamless experience across various devices, including desktops, tablets, and mobile phones.
-<!-- - **Customize URLs**: Personalize your shortened links with custom aliases or let BitBuddy generate unique ones for you. -->
-<!-- - **Link Analytics**: Gain insights into link performance with detailed analytics, including clicks, referrals, and geographic data. -->
+- **Customize URLs**: Personalize your shortened links with custom aliases or let BitBuddy generate unique ones for you.
+- **Link Analytics**: Gain insights into link performance with detailed analytics, including clicks, referrals, and geographic data.
 <!-- - **QR Code Generation**: Generate QR codes for your shortened links, making it easy for users to scan and access your content. -->
 <!-- - **Password Protection**: Add an extra layer of security to your links by setting passwords to protect them. -->
 <!-- - **Link Expiration**: Control the lifespan of your links with customizable expiration dates, ensuring they are only accessible for a specified period. -->
 
 
 ## Preview
-![image](https://github.com/divyanshu1810/BitBuddy/assets/91051053/d365c6c3-3125-4a59-b04b-e1b1b318965b)
-
-
+![image](https://github.com/divyanshu1810/BitBuddy/assets/91051053/03c3cb07-06fb-44b7-aa79-1f601414ac10)
 
 ## Installation
 

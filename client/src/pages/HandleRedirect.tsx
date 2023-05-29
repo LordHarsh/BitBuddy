@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Loader from "../components/Loader";
+import Navbar from "../components/Navbar";
 
 const SERVER_ENDPOINT =
   process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8000";
@@ -38,7 +39,22 @@ function HandleRedirectContainer() {
     return <Loader />;
   }
 
-  return <p>{error && JSON.stringify(error)}</p>;
+  if (destination) {
+    return (
+      <p className="absolute text-white md:text-6xl text-4xl font-semibold top-[10%] left-[5%]">
+        URL found! Redirecting... 🚀
+      </p>
+    );
+  }
+
+  return (
+    <div>
+      <Navbar />
+      <p className="absolute text-white md:text-6xl text-4xl font-semibold top-[12%] left-[5%]">
+        Error 404! URL not found! 😔
+      </p>
+    </div>
+  );
 }
 
 export default HandleRedirectContainer;
