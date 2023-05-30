@@ -61,7 +61,7 @@ const URLShortenerForm: FunctionComponent = () => {
             onSubmit={handleSubmit}
           >
             <input
-              className="w-full text-xl text-white outline-none rounded-md lg:rounded-r-none lg:rounded-l-md  bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
+              className="w-full text-xl placeholder:text-white text-white outline-none rounded-md lg:rounded-r-none lg:rounded-l-md  bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setDestination(e.target.value)}
               placeholder="Paste your link here..."
             />

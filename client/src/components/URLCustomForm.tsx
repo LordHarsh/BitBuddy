@@ -72,12 +72,12 @@ const URLCustomForm: FunctionComponent = () => {
             onSubmit={handleSubmit}
           >
             <input
-              className="w-full text-xl text-white lg:mr-1 outline-none rounded-md bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
+              className="w-full text-xl text-white lg:mr-1 outline-none placeholder:text-white rounded-md bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setDestination(e.target.value)}
               placeholder="Paste your link here..."
             />
             <input
-              className="w-full text-xl text-white outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
+              className="w-full text-xl text-white placeholder:text-white outline-none  rounded-md lg:rounded-r-none lg:rounded-l-md bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg py-3 px-4 font-semibold"
               onChange={(e: any) => setCustom(e.target.value)}
               placeholder="Enter your custom URL here..."
             />
