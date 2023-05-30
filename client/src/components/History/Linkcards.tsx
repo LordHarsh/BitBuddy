@@ -23,10 +23,22 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
       <ToastContainer />
       <div className=" w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
         <div className="flex justify-between items-center">
-          <div>
-            <div>Original Link: {longlink.substring(0, 20)}...</div>
+          <div className="hidden lg:block">
+            <div>Original Link: {longlink.substring(0, 100)}...</div>
             <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
-              <div className="font-semibold">Shorten Link: {shortURL}</div>
+              <div className="">Shorten Link: {shortURL}</div>
+            </a>
+          </div>
+          <div className="hidden md:block lg:hidden">
+            <div>Original Link: {longlink.substring(0, 100)}...</div>
+            <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
+              <div className="">Shorten Link: {shortURL}</div>
+            </a>
+          </div>
+          <div className="md:hidden block">
+            <div>{longlink.substring(0, 25)}...</div>
+            <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
+              <div className="">{shortURL}</div>
             </a>
           </div>
           <div className="flex space-x-2">

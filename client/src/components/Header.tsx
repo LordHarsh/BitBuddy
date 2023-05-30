@@ -10,7 +10,7 @@ const Header: FunctionComponent = () => {
       <div className="text-white text-center flex justify-center pt-10 pb-20">
         <div className="max-w-md font-semibold">
           BitBuddy is an efficient{" "}
-          <span className=" text-[#221552] font-bold text-cool">
+          <span className="text-[#23227d] font-bold text-cool">
             easy-to-use URL shortening
           </span>{" "}
           service that streamlines your online experience.
