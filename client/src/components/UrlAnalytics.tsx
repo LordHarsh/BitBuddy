@@ -43,7 +43,7 @@ const UrlAnalytics: FunctionComponent = () => {
   if (URL) {
     return (
       <div className="flex justify-center flex-col items-center">
-        <div className="absolute top-[20%] lg:top-[25%] w-9/12">
+        <div className="absolute top-[15%] lg:top-[25%] w-9/12">
           <div className="flex text-white justify-between  lg:flex-row flex-col lg:space-x-14">
             <div className="text-center bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg px-10 py-6  rounded-lg">
               <div className="text-xl font-semibold">Clicks</div>
