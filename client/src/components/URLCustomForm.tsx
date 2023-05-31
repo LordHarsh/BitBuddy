@@ -96,7 +96,7 @@ const URLCustomForm: FunctionComponent = () => {
                   <a
                     href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
                   >
-                    <div>BitBuddy/{shortUrl?.shortId}</div>
+                    <div>bitbuddy.tech/{shortUrl?.shortId}</div>
                   </a>
                   <div className="flex space-x-2">
                     <Link to={`/url/analytics/${shortUrl?.shortId}`}>
