@@ -51,9 +51,7 @@ const UrlAnalytics: FunctionComponent = () => {
             </div>
             <div className="text-center p-2 mt-6  lg:mt-0 bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg rounded-lg">
               <div className="">
-                <Qrcode
-                  value={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}
-                />
+                <Qrcode value={`https://www.bitbuddy.tech/${shortURL}`} />
               </div>
             </div>
             <div className="px-10 py-6 bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg text-center lg:w-full  rounded-lg mt-8 lg:mt-0">
