@@ -11,7 +11,11 @@ import validateResourse from "../middleware/validateResourse";
 import shortUrlSchema from "../schemas/createShortUrl.schema";
 
 function routes(app: Express) {
-  app.head("/healthcheck", (req: Request, res: Response) => {
+  app.head("/", (req: Request, res: Response) => {
+    return res.status(200).send();
+  });
+
+  app.get("/healthcheck", (req: Request, res: Response) => {
     return res.status(200).send({
       success: "✅ success",
       message: "🆗 server is up and running",
