@@ -37,8 +37,8 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
           </div>
           <div className="md:hidden block">
             <div>{longlink.substring(0, 25)}...</div>
-            <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
-              <div className="">{shortURL}</div>
+            <a href={`https://www.bitbuddy.tech/${shortURL}`}>
+              <div>{shortURL}</div>
             </a>
           </div>
           <div className="flex space-x-2">
