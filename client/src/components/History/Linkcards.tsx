@@ -25,13 +25,13 @@ const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
         <div className="flex justify-between items-center">
           <div className="hidden lg:block">
             <div>Original Link: {longlink.substring(0, 100)}...</div>
-            <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
+            <a href={`https://www.bitbuddy.tech/${shortURL}`}>
               <div className="">Shorten Link: {shortURL}</div>
             </a>
           </div>
           <div className="hidden md:block lg:hidden">
             <div>Original Link: {longlink.substring(0, 100)}...</div>
-            <a href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortURL}`}>
+            <a href={`https://www.bitbuddy.tech/${shortURL}`}>
               <div className="">Shorten Link: {shortURL}</div>
             </a>
           </div>
