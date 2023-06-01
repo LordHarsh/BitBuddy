@@ -93,9 +93,7 @@ const URLCustomForm: FunctionComponent = () => {
             {shortUrl ? (
               <div className=" w-full text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg md:px-10 px-4 py-2 rounded-md">
                 <div className="flex justify-between">
-                  <a
-                    href={`${process.env.REACT_APP_CLIENT_ENDPOINT}${shortUrl?.shortId}`}
-                  >
+                  <a href={`https://www.bitbuddy.tech/${shortUrl?.shortId}`}>
                     <div>bitbuddy.tech/{shortUrl?.shortId}</div>
                   </a>
                   <div className="flex space-x-2">
