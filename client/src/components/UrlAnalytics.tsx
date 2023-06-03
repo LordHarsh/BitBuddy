@@ -1,19 +1,14 @@
-import axios from "axios";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Loader from "./Loader";
 import Qrcode from "./Qrcode";
-
-const SERVER_ENDPOINT =
-  process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8000";
+import { getAnalytics } from "../utils/rest";
 
 const UrlAnalytics: FunctionComponent = () => {
   const [URL, setURL] = useState<any>();
-
   const [clicks, setClicks] = useState(0);
   const [shortURL, setShortURL] = useState("");
   const [originalURL, setOriginalURL] = useState("");
-
   const [error, setError] = useState();
   const {
     params: { shortId },
@@ -22,21 +17,21 @@ const UrlAnalytics: FunctionComponent = () => {
   }>();
 
   useEffect(() => {
-    async function getData() {
-      return axios
-        .get(`${SERVER_ENDPOINT}/api/analytics/${shortId}`)
-        .then((res) => {
-          setURL(res.data);
-          setClicks(res.data.clicks);
-          setShortURL(res.data.shortId);
-          setOriginalURL(res.data.destination);
-        })
-        .catch((error) => {
-          setError(error.message);
-        });
-    }
+    const getData = async () => {
+      try {
+        const res = await getAnalytics(shortId);
+        const data = await res;
+        setURL(data);
+        setClicks(data.clicks);
+        setShortURL(data.shortId);
+        setOriginalURL(data.destination);
+      } catch (error: Error | any) {
+        setError(error.message);
+      }
+    };
     getData();
   }, [shortId]);
+
   if (!URL && !error) {
     return <Loader />;
   }

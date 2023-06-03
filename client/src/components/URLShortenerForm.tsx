@@ -1,10 +1,10 @@
-import axios from "axios";
 import { FunctionComponent, useState } from "react";
-import { SERVER_ENDPOINTS } from "../config";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import { randomURL } from "../utils/rest";
+import { failure, success } from "../utils/toast";
 
 const URLShortenerForm: FunctionComponent = () => {
   const [destination, setDestination] = useState("");
@@ -16,37 +16,20 @@ const URLShortenerForm: FunctionComponent = () => {
     navigator.clipboard.writeText(
       `${process.env.REACT_APP_CLIENT_ENDPOINT}` + shortUrl?.shortId
     );
-    toast.success("Copied! to Clipboard!✅", {
-      position: "top-right",
-      closeOnClick: true,
-      pauseOnHover: true,
-      theme: "dark",
-    });
+    success("Copied! to Clipboard!✅");
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setShortUrl(null);
+
     try {
-      const result = await axios
-        .post(`${SERVER_ENDPOINTS}/api/url`, {
-          destination,
-        })
-        .then((resp) => resp.data);
-      toast.success("Link has been Shortened!✅", {
-        position: "top-right",
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: "dark",
-      });
-      setShortUrl(result);
+      const result = await randomURL({ destination });
+      const data = await result;
+      setShortUrl(data);
+      success("Link has been Shortened!✅");
     } catch (error) {
-      toast.error("Please enter a valid URL!", {
-        position: "top-right",
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: "dark",
-      });
+      failure("Please enter a valid URL!");
     }
   }
 

@@ -1,11 +1,8 @@
 import React, { FunctionComponent } from "react";
 import QRCode from "react-qr-code";
+import { qrcodetype } from "../utils/schema";
 
-interface QrcodeType {
-  value: string;
-}
-
-const Qrcode: FunctionComponent<QrcodeType> = ({ value }) => {
+const Qrcode: FunctionComponent<qrcodetype> = ({ value }) => {
   return (
     <div className="flex justify-center">
       <QRCode

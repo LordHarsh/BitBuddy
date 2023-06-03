@@ -1,19 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Linkcards from "./Linkcards";
-import { SERVER_ENDPOINTS } from "../../config";
 import Loader from "../Loader";
+import { getHistory } from "../../utils/rest";
 
-const Links = () => {
+const Links: FunctionComponent = () => {
   const [data, setData] = useState([]);
+  const [error, setError] = useState();
+
   useEffect(() => {
-    fetch(`${SERVER_ENDPOINTS}/api/history`)
-      .then((res) => res.json())
-      .then((response) => setData(response));
+    try {
+      const fetchData = async () => {
+        const result = await getHistory();
+        const data = await result;
+        setData(data);
+      };
+      fetchData();
+    } catch (error: Error | any) {
+      setError(error.message);
+    }
   }, []);
 
   return (
     <div>
-      {!data.length ? (
+      {!data.length && !error ? (
         <Loader />
       ) : (
         <div className="flex justify-center px-4 md:px-20 pt-10 pb-20">

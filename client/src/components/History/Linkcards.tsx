@@ -1,27 +1,20 @@
 import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-interface CardsProps {
-  longlink: string;
-  shortURL: string;
-}
+import { ToastContainer } from "react-toastify";
+import { success } from "../../utils/toast";
+import { cardsprops } from "../../utils/schema";
 
-const Linkcards: FunctionComponent<CardsProps> = ({ longlink, shortURL }) => {
+const Linkcards: FunctionComponent<cardsprops> = ({ longlink, shortURL }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(
       `${process.env.REACT_APP_CLIENT_ENDPOINT}` + shortURL
     );
-    toast.success("Copied! to Clipboard!✅", {
-      position: "top-right",
-      closeOnClick: true,
-      pauseOnHover: true,
-      theme: "dark",
-    });
+    success("Copied to Clipboard!✅");
   };
   return (
     <>
       <ToastContainer />
-      <div className=" w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
+      <div className="w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
         <div className="flex justify-between items-center">
           <div className="hidden lg:block">
             <div>Original Link: {longlink.substring(0, 100)}...</div>
