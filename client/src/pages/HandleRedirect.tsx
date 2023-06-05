@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
+import { urltext } from "../utils/constants";
 
 const SERVER_ENDPOINT =
   process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8000";
@@ -42,7 +43,7 @@ function HandleRedirectContainer() {
   if (destination) {
     return (
       <p className="absolute text-white md:text-6xl text-4xl font-semibold top-[10%] left-[5%]">
-        URL found! Redirecting... 🚀
+        {urltext.success}
       </p>
     );
   }
@@ -51,7 +52,7 @@ function HandleRedirectContainer() {
     <div>
       <Navbar />
       <p className="absolute text-white md:text-6xl text-4xl font-semibold top-[12%] left-[5%]">
-        Error 404! URL not found! 😔
+        {urltext.fail}
       </p>
     </div>
   );
