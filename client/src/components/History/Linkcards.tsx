@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { success } from "../../utils/toast";
 import { cardsprops } from "../../utils/schema";
+import { hostedlink, link } from "../../utils/constants";
 
 const Linkcards: FunctionComponent<cardsprops> = ({ longlink, shortURL }) => {
   const handleCopy = () => {
@@ -17,20 +18,32 @@ const Linkcards: FunctionComponent<cardsprops> = ({ longlink, shortURL }) => {
       <div className="w-screen  py-3 px-3 rounded-md mt-2 bg-white bg-opacity-10 hover:bg-opacity-20 lg:backdrop-blur-lg drop-shadow-lg text-white">
         <div className="flex justify-between items-center">
           <div className="hidden lg:block">
-            <div>Original Link: {longlink.substring(0, 100)}...</div>
-            <a href={`https://www.bitbuddy.tech/${shortURL}`}>
-              <div className="">Shorten Link: {shortURL}</div>
+            <div>
+              {link.long}
+              {longlink.substring(0, 100)}...
+            </div>
+            <a href={`${hostedlink}${shortURL}`}>
+              <div>
+                {link.short}
+                {shortURL}
+              </div>
             </a>
           </div>
           <div className="hidden md:block lg:hidden">
-            <div>Original Link: {longlink.substring(0, 100)}...</div>
-            <a href={`https://www.bitbuddy.tech/${shortURL}`}>
-              <div className="">Shorten Link: {shortURL}</div>
+            <div>
+              {link.long}
+              {longlink.substring(0, 100)}...
+            </div>
+            <a href={`${hostedlink}${shortURL}`}>
+              <div>
+                {link.short}
+                {shortURL}
+              </div>
             </a>
           </div>
           <div className="md:hidden block">
             <div>{longlink.substring(0, 25)}...</div>
-            <a href={`https://www.bitbuddy.tech/${shortURL}`}>
+            <a href={`${hostedlink}${shortURL}`}>
               <div>{shortURL}</div>
             </a>
           </div>
