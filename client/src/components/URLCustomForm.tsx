@@ -5,6 +5,7 @@ import Header from "./Header";
 import { Link } from "react-router-dom";
 import { customURL } from "../utils/rest";
 import { failure, success } from "../utils/toast";
+import { hostedlink, notificationtext } from "../utils/constants";
 
 const URLCustomForm: FunctionComponent = () => {
   const [destination, setDestination] = useState("");
@@ -17,7 +18,7 @@ const URLCustomForm: FunctionComponent = () => {
     navigator.clipboard.writeText(
       `${process.env.REACT_APP_CLIENT_ENDPOINT}` + shortUrl?.shortId
     );
-    success("Copied to Clipboard!✅");
+    success(`${notificationtext.copy}`);
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -27,12 +28,12 @@ const URLCustomForm: FunctionComponent = () => {
       const result = await customURL({ destination, shortId: custom });
       const data = await result;
       setShortUrl(data);
-      success("Link has been Shortened!✅");
+      success(`${notificationtext.success}`);
     } catch (error: Error | any) {
       if (error.response.status === 409) {
-        failure("Custom URL already exists!");
+        failure(`${notificationtext.error409}`);
       } else {
-        failure("Please enter a valid URL!");
+        failure(`${notificationtext.errorexist}`);
       }
     }
   }
@@ -69,7 +70,7 @@ const URLCustomForm: FunctionComponent = () => {
             {shortUrl ? (
               <div className=" w-full text-white md:text-2xl font-bold md:space-x-20 space-x-4 bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg md:px-10 px-4 py-2 rounded-md">
                 <div className="flex justify-between">
-                  <a href={`https://www.bitbuddy.tech/${shortUrl?.shortId}`}>
+                  <a href={`${hostedlink}${shortUrl?.shortId}`}>
                     <div>bitbuddy.tech/{shortUrl?.shortId}</div>
                   </a>
                   <div className="flex space-x-2">
