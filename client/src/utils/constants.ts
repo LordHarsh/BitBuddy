@@ -31,7 +31,7 @@ export const analyticsoptions = {
 
 export const urltext = {
   fail: "Error 404! URL not found! 😔",
-  success: "",
+  success: "URL found! Redirecting... 🚀",
 };
 
 export const notificationtext = {
