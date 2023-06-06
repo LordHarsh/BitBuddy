@@ -4,6 +4,10 @@
 
 BitBuddy is a delightful and user-friendly URL shortener built with React, Tailwind CSS, React Router DOM, and Toastify on the frontend, and Node.js, TypeScript, and Yup on the backend. It allows you to shorten long URLs into neat and memorable links, making sharing and managing links a breeze!
 
+## Logo
+
+<div align="center"><img src="/public/logo.png" width="20%" align="center" alt="logo"/></div>
+
 ## Features
 
 - **URL Shortening**: Quickly transform long URLs into short, concise links.
@@ -21,7 +25,7 @@ BitBuddy is a delightful and user-friendly URL shortener built with React, Tailw
 
 
 ## Preview
-![image](https://github.com/divyanshu1810/BitBuddy/assets/91051053/ff9ccb99-3e3a-4615-8e43-90179aca1fe7)
+<img src="/public/preview.png" alt="preview" />
 
 ## Installation
 
