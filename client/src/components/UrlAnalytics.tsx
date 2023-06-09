@@ -11,6 +11,7 @@ const UrlAnalytics: FunctionComponent = () => {
   const [shortURL, setShortURL] = useState("");
   const [originalURL, setOriginalURL] = useState("");
   const [error, setError] = useState();
+  const [timestamp, setTimestamp] = useState("");
   const {
     params: { shortId },
   } = useRouteMatch<{
@@ -26,6 +27,7 @@ const UrlAnalytics: FunctionComponent = () => {
         setClicks(data.clicks);
         setShortURL(data.shortId);
         setOriginalURL(data.destination);
+        setTimestamp(data.timestamp);
       } catch (error: Error | any) {
         setError(error.message);
       }
@@ -39,7 +41,7 @@ const UrlAnalytics: FunctionComponent = () => {
   if (URL) {
     return (
       <div className="flex justify-center flex-col items-center">
-        <div className="absolute top-[15%] lg:top-[25%] w-9/12">
+        <div className="absolute top-[15%] lg:top-[23%] w-9/12">
           <div className="flex text-white justify-between  lg:flex-row flex-col lg:space-x-14">
             <div className="text-center bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg px-10 py-6  rounded-lg">
               <div className="text-xl font-semibold">
@@ -57,6 +59,20 @@ const UrlAnalytics: FunctionComponent = () => {
                 {analyticsoptions.short}
               </div>
               <div>{shortURL}</div>
+            </div>
+          </div>
+          <div className="flex text-white justify-between pt-12 lg:flex-row flex-col lg:space-x-14">
+            <div className="text-center bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg px-10 py-6  rounded-lg">
+              <div className="text-xl font-semibold">
+                {analyticsoptions.time}
+              </div>
+              <div className="text-lg">{timestamp.substring(11, 16)}</div>
+            </div>
+            <div className="px-10 py-6 bg-white bg-opacity-10 hover:bg-opacity-20 backdrop-blur-lg drop-shadow-lg text-center lg:w-full  rounded-lg mt-8 lg:mt-0">
+              <div className="text-xl font-semibold">
+                {analyticsoptions.date}
+              </div>
+              <div>{timestamp.substring(0, 10)}</div>
             </div>
           </div>
           <div className="flex justify-center mb-24 lg:mb-0">
