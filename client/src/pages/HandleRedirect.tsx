@@ -1,12 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { urltext } from "../utils/constants";
-
-const SERVER_ENDPOINT =
-  process.env.REACT_APP_SERVER_ENDPOINT || "http://localhost:8000";
+import { getURL } from "../utils/rest";
 
 function HandleRedirectContainer() {
   const [destination, setDestination] = useState<null | string>(null);
@@ -19,14 +16,16 @@ function HandleRedirectContainer() {
   }>();
 
   useEffect(() => {
-    async function getData() {
-      return axios
-        .get(`${SERVER_ENDPOINT}/api/url/${shortId}`)
-        .then((res) => setDestination(res.data.destination))
-        .catch((error) => {
-          setError(error.message);
-        });
-    }
+    const getData = async () => {
+      try {
+        const res = await getURL(shortId);
+        const data = await res;
+        setDestination(data.destination);
+        console.log(res);
+      } catch (error: Error | any) {
+        setError(error.message);
+      }
+    };
     getData();
   }, [shortId]);
 

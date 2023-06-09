@@ -24,3 +24,8 @@ export const getAnalytics = async (shortId: string) => {
   const { data } = await instance.get(`/api/analytics/${shortId}`);
   return data;
 };
+
+export const getURL = async (shortId: string) => {
+  const { data } = await instance.get(`/api/url/${shortId}`);
+  return data;
+};
