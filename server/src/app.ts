@@ -14,7 +14,7 @@ const port = config.get("port") as number;
 // parse application/json
 app.use(bodyParser.json());
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
   console.log(`Application listening at http://localhost:${port}`);
   db();
   routes(app);
